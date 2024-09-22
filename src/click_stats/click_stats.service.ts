@@ -1,4 +1,3 @@
-// src/click_stats/click_stats.service.ts
 import { Injectable, NotFoundException, ConflictException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -15,7 +14,7 @@ export class ClickStatService {
     private campaignRepository: Repository<Campaign>
   ) {}
 
-  // Create a new click stat
+  // Creating a new click stat
   async create(createClickStatDto: CreateClickStatDto) {
     const existingClickStat = await this.clickStatRepository.findOne({ where: { link: createClickStatDto.link } });
     if (existingClickStat) {
@@ -40,11 +39,6 @@ export class ClickStatService {
     }
 
     return this.clickStatRepository.save(clickStat);
-  }
-
-  // Find all click stats
-  findAll() {
-    return this.clickStatRepository.find({ relations: ['campaign'] });
   }
 
   // Increment click count

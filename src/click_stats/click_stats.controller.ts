@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param, Query, Res, HttpStatus, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Controller, Get, Post, Body, Query, Res, HttpStatus, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
 import { ClickStatService } from './click_stats.service';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { Response } from 'express';
@@ -10,37 +10,25 @@ export class ClickStatController {
   constructor(private readonly clickStatService: ClickStatService) {}
 
   @Post()
-  @UsePipes(new ValidationPipe({ transform: true }))
+  @UsePipes(new ValidationPipe({ transform: true }))// validating the payload
   async createClickStat(@Body() createClickStatDto: CreateClickStatDto) {
     return this.clickStatService.create(createClickStatDto);
   }
 
-  // This route will handle link click tracking and redirection
+  // Route to handle link click tracking and redirection
   @Get('track')
   async trackClick(@Query('link') link: string, @Res() res: Response) {
-      // Check if the link parameter is provided
+      // Checking if the link is provided
       if (!link) {
           return res.status(HttpStatus.BAD_REQUEST).json({ message: 'Link is required' });
       }
   
       try {
-          const redirectUrl = await this.clickStatService.trackLinkClick(link, '', '', ''); // You can add IP and userAgent if needed
-          return res.redirect(HttpStatus.FOUND, redirectUrl); // Redirect to the actual URL
+          const redirectUrl = await this.clickStatService.trackLinkClick(link, '', '', ''); 
+          return res.redirect(HttpStatus.FOUND, redirectUrl); // Redirecting user to the link
       } catch (error) {
           return res.status(HttpStatus.NOT_FOUND).json({ message: error.message });
       }
   }
 
-  // This route will handle open tracking with a transparent 1x1 pixel image
-  @Get('track-open/:campaignId')
-  async trackOpen(@Param('campaignId') campaignId: string, @Res() res: Response) {
-    try {
-      await this.clickStatService.trackOpen(campaignId);
-      const pixel = Buffer.from('R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7', 'base64'); // 1x1 pixel gif
-      res.setHeader('Content-Type', 'image/gif');
-      return res.end(pixel, 'binary');
-    } catch (error) {
-      return res.status(HttpStatus.NOT_FOUND).json({ message: error.message });
-    }
-  }
 }
