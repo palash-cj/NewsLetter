@@ -3,17 +3,19 @@ import { Module } from '@nestjs/common';
 import { EmailService } from './email.service';
 import { EmailController } from './email.controller';
 
+// mvll qkct jtds zmfc
+
 @Module({
     imports: [
         MailerModule.forRootAsync({
             useFactory: async () => ({
                 transport: {
-                    host: process.env.mail_host,
+                    host: 'smtp.gmail.com',
                     port: 587,
                     secure: false,
                     auth: {
-                        user: process.env.mail_user,
-                        pass: process.env.mail_password,
+                        user: 'palash.vdoit@gmail.com',
+                        pass: 'mvll qkct jtds zmfc',
                     },
                 },
                 defaults: {

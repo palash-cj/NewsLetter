@@ -15,7 +15,7 @@ describe('ClickStatController (e2e)', () => {
         })
             .overrideProvider(getRepositoryToken(ClickStat))
             .useValue({
-                findOne: jest.fn().mockResolvedValue({ link: 'https://www.google.co/', clickCount: 0 }),
+                findOne: jest.fn().mockResolvedValue({ link: 'https://us06web.zoom.us/', clickCount: 0 }),
                 save: jest.fn(),
             })
             .compile();
@@ -29,9 +29,9 @@ describe('ClickStatController (e2e)', () => {
     it('/click-stats (POST) - Validation Error: Missing Link', () => {
         const payload = {
             clickCount: 0,
-            campaignId: 'b0b7792c-f1bb-4224-a340-2aeb47829021',
+            campaignId: '460d2b78-efac-45d5-baf5-896275fc2a25',
         };
-        const token = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwic3ViIjoiZTk4Yjg4NGItNWY4My00MjRhLWE1YjktMDk0OWU4M2IwOGRlIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MjcwMTYyMTgsImV4cCI6MTcyNzAxOTgxOH0.o2G1srxfoF7eBgDuPFiP7Evgae1Sl1C2NQbgaPSdjgI`;
+        const token = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwic3ViIjoiZmQ4OTQwMjgtMTdmNy00NzljLTg1NTgtNTYwZjU0OWQwYWFjIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MjcwODAwNzYsImV4cCI6MTcyNzA4MzY3Nn0.yq_Y7zPR0kulufxhZQeLJqXywF3R5gYfZ1XiBfk88Nw`;
 
         return request(app.getHttpServer())
             .post('/click-stats')
@@ -49,7 +49,7 @@ describe('ClickStatController (e2e)', () => {
             clickCount: 0,
             campaignId: 'njkdfv',
         };
-        const token = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwic3ViIjoiZTk4Yjg4NGItNWY4My00MjRhLWE1YjktMDk0OWU4M2IwOGRlIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MjcwMTYyMTgsImV4cCI6MTcyNzAxOTgxOH0.o2G1srxfoF7eBgDuPFiP7Evgae1Sl1C2NQbgaPSdjgI`;
+        const token = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwic3ViIjoiZmQ4OTQwMjgtMTdmNy00NzljLTg1NTgtNTYwZjU0OWQwYWFjIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MjcwODAwNzYsImV4cCI6MTcyNzA4MzY3Nn0.yq_Y7zPR0kulufxhZQeLJqXywF3R5gYfZ1XiBfk88Nw`;
 
         return request(app.getHttpServer())
             .post('/click-stats')
@@ -66,7 +66,7 @@ describe('ClickStatController (e2e)', () => {
             link: 'https://www.google.co/',
             clickCount: 0,
         };
-        const token = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwic3ViIjoiZTk4Yjg4NGItNWY4My00MjRhLWE1YjktMDk0OWU4M2IwOGRlIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MjcwMTYyMTgsImV4cCI6MTcyNzAxOTgxOH0.o2G1srxfoF7eBgDuPFiP7Evgae1Sl1C2NQbgaPSdjgI`;
+        const token = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwic3ViIjoiZmQ4OTQwMjgtMTdmNy00NzljLTg1NTgtNTYwZjU0OWQwYWFjIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MjcwODAwNzYsImV4cCI6MTcyNzA4MzY3Nn0.yq_Y7zPR0kulufxhZQeLJqXywF3R5gYfZ1XiBfk88Nw`;
 
         return request(app.getHttpServer())
             .post('/click-stats')
@@ -80,11 +80,11 @@ describe('ClickStatController (e2e)', () => {
 
     it('/click-stats (POST) - Validation Error: Campaign Not Found', () => {
         const payload = {
-            link: 'https://www.google.co/',
+            link: 'https://us06web.zoom.us/',
             clickCount: 0,
             campaignId: '44e19404-8394-4562-ae27-2d595fa7c677',
         };
-        const token = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwic3ViIjoiZTk4Yjg4NGItNWY4My00MjRhLWE1YjktMDk0OWU4M2IwOGRlIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MjcwMTYyMTgsImV4cCI6MTcyNzAxOTgxOH0.o2G1srxfoF7eBgDuPFiP7Evgae1Sl1C2NQbgaPSdjgI`;
+        const token = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwic3ViIjoiZmQ4OTQwMjgtMTdmNy00NzljLTg1NTgtNTYwZjU0OWQwYWFjIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MjcwODAwNzYsImV4cCI6MTcyNzA4MzY3Nn0.yq_Y7zPR0kulufxhZQeLJqXywF3R5gYfZ1XiBfk88Nw`;
     
         return request(app.getHttpServer())
             .post('/click-stats')
@@ -100,9 +100,9 @@ describe('ClickStatController (e2e)', () => {
         const payload = {
             link: 'https://www.google.co/',
             clickCount: 0,
-            campaignId: 'b0b7792c-f1bb-4224-a340-2aeb47829021',
+            campaignId: '460d2b78-efac-45d5-baf5-896275fc2a25',
         };
-        const token = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwic3ViIjoiZTk4Yjg4NGItNWY4My00MjRhLWE1YjktMDk0OWU4M2IwOGRlIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MjcwMTYyMTgsImV4cCI6MTcyNzAxOTgxOH0.o2G1srxfoF7eBgDuPFiP7Evgae1Sl1C2NQbgaPSdjgI`;
+        const token = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwic3ViIjoiZmQ4OTQwMjgtMTdmNy00NzljLTg1NTgtNTYwZjU0OWQwYWFjIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MjcwODAwNzYsImV4cCI6MTcyNzA4MzY3Nn0.yq_Y7zPR0kulufxhZQeLJqXywF3R5gYfZ1XiBfk88Nw`;
     
         clickStatRepository.findOne = jest.fn().mockResolvedValue(payload);
     
@@ -118,11 +118,11 @@ describe('ClickStatController (e2e)', () => {
 
     it('/click-stats (POST) - Successful Creation', () => {
         const payload = {
-            link: 'https://www.google.co/',
+            link: 'https://us06web.zoom.us/',
             clickCount: 0,
-            campaignId: 'b0b7792c-f1bb-4224-a340-2aeb47829021',
+            campaignId: '460d2b78-efac-45d5-baf5-896275fc2a25',
         };
-        const token = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwic3ViIjoiZTk4Yjg4NGItNWY4My00MjRhLWE1YjktMDk0OWU4M2IwOGRlIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MjcwMTYyMTgsImV4cCI6MTcyNzAxOTgxOH0.o2G1srxfoF7eBgDuPFiP7Evgae1Sl1C2NQbgaPSdjgI`;
+        const token = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwic3ViIjoiZmQ4OTQwMjgtMTdmNy00NzljLTg1NTgtNTYwZjU0OWQwYWFjIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MjcwODAwNzYsImV4cCI6MTcyNzA4MzY3Nn0.yq_Y7zPR0kulufxhZQeLJqXywF3R5gYfZ1XiBfk88Nw`;
 
         return request(app.getHttpServer())
             .post('/click-stats')
@@ -139,7 +139,7 @@ describe('ClickStatController (e2e)', () => {
     });
 
     it('/click-stats/track (GET) - Authorized', () => {
-        const token = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwic3ViIjoiZTk4Yjg4NGItNWY4My00MjRhLWE1YjktMDk0OWU4M2IwOGRlIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MjcwMTYyMTgsImV4cCI6MTcyNzAxOTgxOH0.o2G1srxfoF7eBgDuPFiP7Evgae1Sl1C2NQbgaPSdjgI`;
+        const token = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwic3ViIjoiZmQ4OTQwMjgtMTdmNy00NzljLTg1NTgtNTYwZjU0OWQwYWFjIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MjcwODAwNzYsImV4cCI6MTcyNzA4MzY3Nn0.yq_Y7zPR0kulufxhZQeLJqXywF3R5gYfZ1XiBfk88Nw`;
         clickStatRepository.findOne = jest.fn().mockResolvedValue({ link: 'https://www.google.co.uk/', clickCount: 0 });
         return request(app.getHttpServer())
             .get('/click-stats/track?link=https://www.google.co.uk/')
@@ -149,7 +149,7 @@ describe('ClickStatController (e2e)', () => {
     });
 
     it('/click-stats/track (GET) - Link Not Found', () => {
-        const token = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwic3ViIjoiZTk4Yjg4NGItNWY4My00MjRhLWE1YjktMDk0OWU4M2IwOGRlIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MjcwMTYyMTgsImV4cCI6MTcyNzAxOTgxOH0.o2G1srxfoF7eBgDuPFiP7Evgae1Sl1C2NQbgaPSdjgI`;
+        const token = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwic3ViIjoiZmQ4OTQwMjgtMTdmNy00NzljLTg1NTgtNTYwZjU0OWQwYWFjIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MjcwODAwNzYsImV4cCI6MTcyNzA4MzY3Nn0.yq_Y7zPR0kulufxhZQeLJqXywF3R5gYfZ1XiBfk88Nw`;
 
         clickStatRepository.findOne = jest.fn().mockResolvedValue(null);
 
@@ -160,7 +160,7 @@ describe('ClickStatController (e2e)', () => {
     })
 
     it('/click-stats/track (GET) - Link Not Provided', () => {
-        const token = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwic3ViIjoiZTk4Yjg4NGItNWY4My00MjRhLWE1YjktMDk0OWU4M2IwOGRlIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MjcwMTYyMTgsImV4cCI6MTcyNzAxOTgxOH0.o2G1srxfoF7eBgDuPFiP7Evgae1Sl1C2NQbgaPSdjgI`;
+        const token = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5AZ21haWwuY29tIiwic3ViIjoiZmQ4OTQwMjgtMTdmNy00NzljLTg1NTgtNTYwZjU0OWQwYWFjIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MjcwODAwNzYsImV4cCI6MTcyNzA4MzY3Nn0.yq_Y7zPR0kulufxhZQeLJqXywF3R5gYfZ1XiBfk88Nw`;
 
         return request(app.getHttpServer())
             .get('/click-stats/track') 

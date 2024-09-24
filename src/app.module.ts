@@ -19,6 +19,7 @@ import { User } from './users/entities/user.entity';
 import { EmailModule } from './email/email.module';
 import { ScheduleModule } from '@nestjs/schedule';
 import { TasksModule } from './tasks/task.module';
+import { TrackingModule } from './tracking/tracking.module';
 
 @Global()
 @Module({
@@ -42,7 +43,8 @@ import { TasksModule } from './tasks/task.module';
     AuthModule,
     EmailModule,
     ScheduleModule.forRoot(), 
-    TasksModule
+    TasksModule,
+    TrackingModule
   ],
   controllers: [AppController],
   providers: [AppService],

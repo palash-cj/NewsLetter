@@ -16,6 +16,12 @@ export class ClickStat {
   @Column({ default: 0 })
   clickCount: number;
 
+  @Column('text', { array: true, default: () => "'{}'" }) // Initialize with an empty array
+  opened: string[];
+
+  @Column('text', { array: true, default: () => "'{}'" }) // Initialize with an empty array
+  clicked: string[];
+
   @CreateDateColumn()
   createdAt: Date;
 }

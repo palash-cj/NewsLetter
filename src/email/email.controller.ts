@@ -7,7 +7,7 @@ export class EmailController {
 
     @Get('send')
     async sendEmail() {
-        const to = "myemail@gmail.com";
+        const to = "jemipalash@gmail.com";
         const subject = "testing";
         const text = "it working or not";
         await this.emailService.sendEmail(to, subject, text);
