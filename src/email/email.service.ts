@@ -7,8 +7,8 @@ export class EmailService {
 
     async sendEmail(to: string, subject: string, text: string) {
         try {
-            let campaignId = '8d7d25b4-f6fb-4758-9a02-e16ec5f0f93';
-            let linkId = '38c5f2fa-15fb-4397-9cc9-907b54faea4b';
+            let campaignId = '0f5d24c2-cc0e-463a-b427-729a4482ef99';
+            let linkId = '7cf7b3ce-1a70-48c1-ac01-d13ad2171ace';
             // Generate a trackable link
             const trackableLink = `https://k84gtxt2-4578.inc1.devtunnels.ms/api/tracking/${campaignId}/${linkId}/click/${to}`;
             const trackingImageUrl = `https://k84gtxt2-4578.inc1.devtunnels.ms/api/tracking/${campaignId}/${linkId}/open/${to}`;
